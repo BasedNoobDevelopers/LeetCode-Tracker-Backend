@@ -46,7 +46,7 @@ This is a **full-stack application** that provides an interactive dashboard, use
 
 ## 🧭 Architecture Diagram
 
-![LeetCode Tracker Architecture](assets/architecture.svg)
+![LeetCode Tracker Architecture](assets/architecture.png)
 
 ---
 
