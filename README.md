@@ -120,13 +120,42 @@ This is a **full-stack application** that provides an interactive dashboard, use
               └────────────┘
 ````
 ---
-## 🧠 Developers
-* Author: Omoruyi Omofonmwan \
-  Role: Software Engineer / DevOps
+## 🔐 Security Overview
 
+* Passwords hashed and salted (BCrypt)
+* JWT authentication with refresh tokens
+* Role-based access control (Admin/User)
+* HTTPS enforced (AWS ACM Certificates)
+* Secrets managed via AWS Secrets Manager && GitHub Actions
+* Input validation and sanitization
+* Rate limiting and secure CORS configuration
+  
+---
+## ⚡ Caching Strategy
+Cache Layer |	Purpose |	TTL
+|---|---|---|
+Redis |	Store LeetCode question metadata |	24 hours
+Redis |	Store JWT refresh tokens (optional) |	Configurable
+Redis |	Session and user data caching |	15 minute
+
+---
+## ☁️ Environments & Deployment
+Environment |	Purpose |	Deployment Target
+|---|---|---|
+DEV |	Local development & testing |	Docker Compose
+QA |	Integration & staging |	AWS ECS (staging)
+PROD |	Live deployment |	AWS ECS / Fargate
+
+All services are containerized and deployed using GitHub Actions CI/CD -> DockerHub -> ECR -ECS
+
+---
+## 🧠 Developers
 * Author: Adedayo Uwensuyi \
   Role: Software Engineer / DevOps
 
 * Author: Ajinboye Uwensuyi \
+  Role: Software Engineer / DevOps
+
+* Author: Omoruyi Omofonmwan \
   Role: Software Engineer / DevOps
 
