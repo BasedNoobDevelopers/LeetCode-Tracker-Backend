@@ -118,15 +118,15 @@ This is a **full-stack application** that provides an interactive dashboard, use
               │ AWS Cloud  │
               │ ECS + ECR  │
               └────────────┘
-
-
+````
+---
 ## 🧠 Developers
-Author: Omoruyi Omofonmwan
-Role: Software Engineer / DevOps
+* Author: Omoruyi Omofonmwan \
+  Role: Software Engineer / DevOps
 
-Author: Adedayo Uwensuyi
-Role: Software Engineer / DevOps
+* Author: Adedayo Uwensuyi \
+  Role: Software Engineer / DevOps
 
-Author: Ajinboye Uwensuyi
-Role: Software Engineer / DevOps
+* Author: Ajinboye Uwensuyi \
+  Role: Software Engineer / DevOps
 
