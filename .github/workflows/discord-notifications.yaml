@@ -1,4 +1,4 @@
-name: Send Discord Notification
+name: Send Discord Notifications
 
 run-name: Send Discord Notification -- ${{github.action}} -- ${{github.ref_name}}
 
