@@ -3,7 +3,7 @@ name: Send Discord Notification
 run-name: Send Discord Notification -- ${{github.action}} -- ${{github.ref_name}}
 
 on:
-  push:
+  pull_request:
 
 
 jobs:
@@ -13,6 +13,12 @@ jobs:
       - name: Send Discord Message
         uses: Ilshidur/action-discord@master
         with:
-          args: "A new commit from ${{github.actor}} -- ${{github.ref_name}}"
+          args: | 
+            "A new PR from ${{github.event.pull_request.user}} please review"
+            "PR Title -- ${{github.event.pull_request.title}}"
+            "PR Base Branch -- ${{github.event.pull_request.base}}"
+            "PR Target Branch -- ${{github.event.pull_request.head.ref}}"
+            "[PR Link]($PR_URL)"
         env:
           DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK_URL}}
+          PR_URL: "https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
