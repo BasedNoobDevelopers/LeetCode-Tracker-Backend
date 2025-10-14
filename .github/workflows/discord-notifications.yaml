@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Get Current Time
         id: current_time
-        run: echo "TIMESTAMP=$(date +\"%Y%m%d%H%M%S\")" >> $GITHUB_OUTPUTS
+        run: echo "TIMESTAMP=$(date +\"%Y%m%d%H%M%S\")" >> $GITHUB_OUTPUT
 
       - name: Send Discord Message
         uses: Ilshidur/action-discord@master
@@ -28,3 +28,4 @@ jobs:
             "[PR Link](https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }})"
         env:
           DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK_URL}}
+          DISCORD_USERNAME: true
