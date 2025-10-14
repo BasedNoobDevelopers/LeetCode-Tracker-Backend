@@ -1,6 +1,6 @@
-name: Send Discord Notification
+name: Send Discord Notifications
 
-run-name: Send Discord Notification -- ${{github.action}} -- ${{github.ref_name}}
+run-name: Send Discord Notification -- ${{github.event.pull_request.user.login}} -- ${{github.ref_name}}
 
 on:
   pull_request:
@@ -10,15 +10,22 @@ jobs:
   notify-discord:
     runs-on: ubuntu-24.04
     steps:
+      - name: Get Current Time
+        id: current_time
+        run: echo "TIMESTAMP=$(date +\"%Y%m%d_%H%M%S\")" >> $GITHUB_OUTPUT
+
       - name: Send Discord Message
         uses: Ilshidur/action-discord@master
         with:
           args: | 
-            "A new PR from ${{github.event.pull_request.user}} please review"
-            "PR Title -- ${{github.event.pull_request.title}}"
-            "PR Base Branch -- ${{github.event.pull_request.base}}"
-            "PR Target Branch -- ${{github.event.pull_request.head.ref}}"
-            "[PR Link]($PR_URL)"
+            "A new PR from **${{github.event.pull_request.user.login}}** please review"
+            ""
+            ```"PR Title -- ${{github.event.pull_request.title}}"
+            "PR Base Branch -- ${{github.event.pull_request.head.ref}}"
+            "PR Target Branch -- ${{github.event.pull_request.base.ref}}"
+            "PR Time Stamp -- ${{steps.current_time.outputs.TIMESTAMP}}"```
+            ""
+            "[PR Link](https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }})"
         env:
           DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK_URL}}
-          PR_URL: "https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
+          DISCORD_USERNAME: SWAMP IZZO BOT
