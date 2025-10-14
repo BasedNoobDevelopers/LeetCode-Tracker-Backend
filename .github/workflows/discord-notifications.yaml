@@ -1,0 +1,18 @@
+name: Send Discord Notification
+
+run-name: Send Discord Notification -- ${{github.action}} -- ${{github.ref_name}}
+
+on:
+  push:
+
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Send Discord Message
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "A new commit from ${{github.actor}} -- ${{github.ref_name}}"
+        env:
+          DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK_URL}}
