@@ -18,7 +18,7 @@ jobs:
             ""
             "PR Title -- ${{github.event.pull_request.title}}"
             "PR Base Branch -- ${{github.event.pull_request.head.ref}}"
-            "PR Target Branch -- ${{github.event.pull_request.base}}"
+            "PR Target Branch -- ${{github.event.pull_request.base.ref}}"
             "[PR Link](https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }})"
         env:
           DISCORD_WEBHOOK: ${{secrets.DISCORD_WEBHOOK_URL}}
