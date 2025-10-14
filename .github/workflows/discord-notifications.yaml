@@ -12,13 +12,13 @@ jobs:
     steps:
       - name: Get Current Time
         id: current_time
-        run: echo "TIMESTAMP=$(date +\"%Y-%m-%d %H:%M:%S\")" >> $GITHUB_OUTPUT
+        run: echo "TIMESTAMP=$(date +\"%Y%m%d_%H%M%S\")" >> $GITHUB_OUTPUT
 
       - name: Send Discord Message
         uses: Ilshidur/action-discord@master
         with:
           args: | 
-            "A new PR from ${{github.event.pull_request.user.login}} please review"
+            "A new PR from **${{github.event.pull_request.user.login}}** please review"
             ""
             ```"PR Title -- ${{github.event.pull_request.title}}"
             "PR Base Branch -- ${{github.event.pull_request.head.ref}}"
