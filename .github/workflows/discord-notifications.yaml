@@ -12,9 +12,7 @@ jobs:
     steps:
       - name: Get Current Time
         id: current_time
-        uses: josStorer/get-current-time@v2.3.1 # Or another similar action
-        with:
-          format: 'YYYY-MM-DD-HH-mm-ss' # Customize the format as needed
+        run: echo "TIMESTAMP=$(date +\"%Y%m%d%H%M%S\")" >> $GITHUB_OUTPUTS
 
       - name: Send Discord Message
         uses: Ilshidur/action-discord@master
