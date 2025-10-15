@@ -17,13 +17,17 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-      - name: Connect to Server
+      - name: Configure Files
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
-          ssh -i id_rsa ec2-user@54.226.103.0
+
+      - name: Connect To Server
+        run: |
+          ssh -i id_rsa ${{secrets.AWS_HOST}}@${{secrets.AWS_HOST_IP}}
           sudo docker --version
-          sudo docker ps
+          sudo docker ps -a
+          cat test_file.txt
