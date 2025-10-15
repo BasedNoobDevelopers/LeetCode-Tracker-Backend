@@ -28,8 +28,10 @@ jobs:
       - name: Connect To Server
         run: |
           ssh -i id_rsa ${{secrets.AWS_HOST}}@${{secrets.AWS_HOST_IP}} -t "
+            cat test_file.txt &&
             sudo docker --version &&
             sudo docker ps -a &&
-            sudo docker run -d -p 8080:8080 --name test ${{secrets.ONEHPEE_DOCKER_USERNAME}}/test:1.0.0 &&
+            sudo docker rm -f test &&
+            sudo docker run -d -p 8080:8080 --name test_2 ${{secrets.ONEHPEE_DOCKER_USERNAME}}/test:1.0.0 &&
             sudo docker ps -a
           "
