@@ -1,6 +1,6 @@
 name: Deploy To Server
 
-run-name: Deploy To Server -- ${{inputs.tag}}
+run-name: Deploy To Server -- ${{inputs.tag || github.ref_name}}
 
 on:
   push:
