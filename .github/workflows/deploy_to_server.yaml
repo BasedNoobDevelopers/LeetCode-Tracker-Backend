@@ -30,4 +30,4 @@ jobs:
           ssh -i id_rsa ${{secrets.AWS_HOST}}@${{secrets.AWS_HOST_IP}}
           sudo docker --version
           sudo docker ps -a
-          cat test_file.txt
+          ls
