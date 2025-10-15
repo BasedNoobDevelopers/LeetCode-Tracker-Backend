@@ -3,6 +3,7 @@ name: Deploy To Server
 run-name: Deploy To Server -- ${{inputs.tag}}
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       tag:
