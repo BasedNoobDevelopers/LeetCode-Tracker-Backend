@@ -30,6 +30,6 @@ jobs:
           ssh -i id_rsa ${{secrets.AWS_HOST}}@${{secrets.AWS_HOST_IP}} -t "
             sudo docker --version &&
             sudo docker ps -a &&
-            sudo docker run -p 8081:8080 --name test ${{secrets.ONEHPEE_DOCKER_USERNAME}}/test:1.0.0 &&
+            sudo docker run -d -p 8080:8080 --name test ${{secrets.ONEHPEE_DOCKER_USERNAME}}/test:1.0.0 &&
             sudo docker ps -a
           "
