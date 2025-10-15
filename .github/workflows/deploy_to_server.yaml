@@ -19,6 +19,6 @@ jobs:
       - name: Connect to Server
         run: |
           echo "${{secrets.PRIVATE_KEY}}" >> test_server_key.pem
-          ssh -i test_server_key.pem ${{secrets.AWS_HOST}}@${{secrets.AWS_HOST_IP}}
+          ssh -i -T test_server_key.pem ${{secrets.AWS_HOST}}@${{secrets.AWS_HOST_IP}}
           sudo docker --version
           sudo docker ps
