@@ -1,0 +1,23 @@
+name: Deploy To Server
+
+run-name: Deploy To Server -- ${{inputs.tag}}
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        type: choice
+        description: Tag
+        required: false
+        options:
+          - 1.0.0
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Connect to Server
+        run: |
+          ssh -i ${{secrets.PRIVATE_KEY}} ${{secrets.AWS_HOST}}@${{secrets.AWS_HOST_IP}}
+          sudo docker --version
+          sudo docker ps
