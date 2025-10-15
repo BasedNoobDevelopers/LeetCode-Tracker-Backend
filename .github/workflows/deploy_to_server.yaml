@@ -31,6 +31,6 @@ jobs:
           sudo docker --version
           sudo docker ps -a
           whoami
-          su -u ${{secrets.AWS_HOST}}
+          su - ${{secrets.AWS_HOST}}
           whoami
           ls
