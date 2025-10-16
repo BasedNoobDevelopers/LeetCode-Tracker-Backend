@@ -1,0 +1,70 @@
+type Query {
+    problemsetQuestionList(
+        categorySlug: String
+        skip: Int
+        limit : Int
+        filters: filter
+    ): problemsetQuestionList
+    getQuestionById(id: Int): Question
+}
+
+input filter {
+    searchKeywords: String
+}
+
+type problemsetQuestionList {
+    questions: [Question]
+}
+
+type Question {
+    frontendQuestionId: String
+    title: String
+    topicTags: [TopicTag]
+    difficulty: String
+}
+
+type TopicTag {
+    name: String
+}
+
+#type Query {
+#    problemsetQuestionList(
+#        categorySlug: String
+#        limit: Int
+#        skip: Int
+#        filters: QuestionListFilterInput
+#    ): ProblemsetQuestionList
+#}
+#
+#type ProblemsetQuestionList {
+#    total: Int
+#    questions: [Question]
+#}
+#
+#type Question {
+#    acRate: Float
+#    difficulty: String
+#    freqBar: Float
+#    frontendQuestionId: String
+#    isFavor: Boolean
+#    paidOnly: Boolean
+#    status: String
+#    title: String
+#    titleSlug: String
+#    topicTags: [TopicTag]
+#    hasSolution: Boolean
+#    hasVideoSolution: Boolean
+#}
+#
+#type TopicTag {
+#    name: String
+#    id: ID
+#    slug: String
+#}
+#
+#input QuestionListFilterInput {
+#    tags: [String]
+#    difficulty: String
+#    status: String
+#    searchKeywords: String
+#}
