@@ -1,5 +1,7 @@
-package com.acompletenoobsmoke.leetcodetrackerbackend.user;
+package com.acompletenoobsmoke.leetcodetrackerbackend.repository.fake;
 
+import com.acompletenoobsmoke.leetcodetrackerbackend.dao.UserDAO;
+import com.acompletenoobsmoke.leetcodetrackerbackend.model.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Repository;
 

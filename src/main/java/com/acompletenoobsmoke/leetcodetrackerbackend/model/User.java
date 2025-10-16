@@ -1,4 +1,4 @@
-package com.acompletenoobsmoke.leetcodetrackerbackend.user;
+package com.acompletenoobsmoke.leetcodetrackerbackend.model;
 
 public class User {
 
