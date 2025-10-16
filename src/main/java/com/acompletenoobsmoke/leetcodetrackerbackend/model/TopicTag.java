@@ -1,20 +1,20 @@
 package com.acompletenoobsmoke.leetcodetrackerbackend.model;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.stereotype.Service;
 
-
+@Getter
+@Service
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@Entity
 public class TopicTag {
-
-
+    @Id
     private String name;
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }

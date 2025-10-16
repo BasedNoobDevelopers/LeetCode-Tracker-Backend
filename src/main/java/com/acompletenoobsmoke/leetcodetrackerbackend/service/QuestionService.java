@@ -92,4 +92,12 @@ public class QuestionService {
         questionRepository.save(question);
         return question;
     }
+
+    public Question getQuestionById(Integer id) {
+        return questionRepository.findById(id).orElse(null);
+    }
+
+    public List<Question> getAllQuestions() {
+        return questionRepository.findAll();
+    }
 }
