@@ -18,25 +18,17 @@ public class QuestionController {
 
 
     private final QuestionService questionService;
-    private final QuestionMapper questionMapper;
 
-    public QuestionController(QuestionService questionService,  QuestionMapper questionMapper) {
+    public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
-        this.questionMapper = questionMapper;
     }
 
-    @QueryMapping
-    public Question problemsetQuestionList(@Argument String categorySlug,
-                                           @Argument Integer skip,
-                                           @Argument Integer limit,
-                                           @Argument Map<String, Object> filters) {
-        return questionMapper.mapToQuestion(questionService.getProblemSetQuestion(categorySlug, skip, limit, filters));
-    }
 
     @QueryMapping
     public Question getQuestionById(@Argument Integer id) {
         Map<String, Object> filters = new HashMap<>();
         filters.put("searchKeywords", id);
-        return questionMapper.mapToQuestion(questionService.getProblemSetQuestion("", 0, 1, filters));
+        Map<String, Object> request = questionService.getProblemSetQuestion("", 0, 1, filters);
+        return questionService.addQuestion(request);
     }
 }
