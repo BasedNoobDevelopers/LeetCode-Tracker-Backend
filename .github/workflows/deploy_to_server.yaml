@@ -3,7 +3,6 @@ name: Deploy To Server
 run-name: Deploy To Server -- ${{inputs.tag || github.ref_name}}
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       tag:
@@ -31,7 +30,7 @@ jobs:
             cat test_file.txt &&
             sudo docker --version &&
             sudo docker ps -a &&
-            sudo docker rm -f test &&
-            sudo docker run -d -p 8080:8080 --name test_2 ${{secrets.ONEHPEE_DOCKER_USERNAME}}/test:1.0.0 &&
+            sudo docker rm -f test_2 &&
+            sudo docker run -d -p 8080:8080 --name test_2 -e "SPRING_PROFILES_ACTIVE=prod" ${{secrets.ONEHPEE_DOCKER_USERNAME}}/test:2.0.0 &&
             sudo docker ps -a
           "
