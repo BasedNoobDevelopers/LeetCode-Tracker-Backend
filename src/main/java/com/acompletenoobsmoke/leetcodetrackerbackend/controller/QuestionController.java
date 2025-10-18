@@ -26,14 +26,6 @@ public class QuestionController {
 
     @QueryMapping
     public Question getQuestionById(@Argument Integer id) {
-        Map<String, Object> filters = new HashMap<>();
-
-        for (int i = 1; i <= 3617; i++) {
-            filters.put("searchKeywords", i);
-            Map<String, Object> request = questionService.getProblemSetQuestion("", 0, 1, filters);
-            questionService.addQuestion(request);
-        }
-        //Map<String, Object> request = questionService.getProblemSetQuestion("", 0, 1, filters);
-        return null;
+        return questionService.getQuestionById(id);
     }
 }

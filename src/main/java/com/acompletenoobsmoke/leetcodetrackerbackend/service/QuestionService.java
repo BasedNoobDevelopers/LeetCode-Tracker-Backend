@@ -1,6 +1,7 @@
 package com.acompletenoobsmoke.leetcodetrackerbackend.service;
 
 import com.acompletenoobsmoke.leetcodetrackerbackend.dao.QuestionDAO;
+import com.acompletenoobsmoke.leetcodetrackerbackend.exception.ResourceNotFoundException;
 import com.acompletenoobsmoke.leetcodetrackerbackend.mapper.QuestionMapper;
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.Question;
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.TopicTag;
@@ -94,7 +95,8 @@ public class QuestionService {
     }
 
     public Question getQuestionById(Integer id) {
-        return questionRepository.findById(id).orElse(null);
+        return questionRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Question with id " + id + " not found!"));
     }
 
     public List<Question> getAllQuestions() {
