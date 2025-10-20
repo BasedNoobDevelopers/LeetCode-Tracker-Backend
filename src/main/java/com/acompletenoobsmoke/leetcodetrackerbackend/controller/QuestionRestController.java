@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/leetcode-tracker/questions")
+@RequestMapping("api/v1/questions")
 public class QuestionRestController {
 
-    private QuestionService questionService;
+    private final QuestionService questionService;
 
     public QuestionRestController(QuestionService questionService) {
         this.questionService = questionService;
