@@ -8,6 +8,8 @@ import com.acompletenoobsmoke.leetcodetrackerbackend.model.TopicTag;
 import com.acompletenoobsmoke.leetcodetrackerbackend.repository.TopicTagRepository;
 import com.acompletenoobsmoke.leetcodetrackerbackend.repository.real.QuestionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -99,7 +101,7 @@ public class QuestionService {
                 .orElseThrow(() -> new ResourceNotFoundException("Question with id " + id + " not found!"));
     }
 
-    public List<Question> getAllQuestions() {
-        return questionRepository.findAll();
+    public Page<Question> getAllQuestions(Pageable pageable) {
+        return questionRepository.findAll(pageable);
     }
 }

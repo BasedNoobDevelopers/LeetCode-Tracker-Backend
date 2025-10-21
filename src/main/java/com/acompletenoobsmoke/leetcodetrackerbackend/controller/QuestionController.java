@@ -28,4 +28,11 @@ public class QuestionController {
     public Question getQuestionById(@Argument Integer id) {
         return questionService.getQuestionById(id);
     }
+
+//    @QueryMapping
+//    public List<Question> getAllQuestions() {
+//        return questionService.getAllQuestions();
+//    }
+
+
 }

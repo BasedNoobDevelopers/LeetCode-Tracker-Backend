@@ -3,7 +3,10 @@ package com.acompletenoobsmoke.leetcodetrackerbackend.repository.real;
 import com.acompletenoobsmoke.leetcodetrackerbackend.dao.QuestionDAO;
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.DIFFICULTY;
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.Question;
+
 import org.hibernate.type.descriptor.converter.spi.JpaAttributeConverter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
+    Page<Question> findAll(Pageable pageable);
 
     Optional<Question> findAllByFrontendQuestionId(Integer frontendQuestionId);
     Optional<Question>  findAllByTitle(String title);

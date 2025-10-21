@@ -2,6 +2,8 @@ package com.acompletenoobsmoke.leetcodetrackerbackend.controller;
 
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.Question;
 import com.acompletenoobsmoke.leetcodetrackerbackend.service.QuestionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +22,8 @@ public class QuestionRestController {
     }
 
     @GetMapping
-    public List<Question> getAllQuestions() {
-        return questionService.getAllQuestions();
+    public Page<Question> getAllQuestions(Pageable pageable) {
+        return questionService.getAllQuestions(pageable);
     }
 
     @GetMapping("{id}")
