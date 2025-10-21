@@ -6,6 +6,7 @@ type Query {
         filters: filter
     ): problemsetQuestionList
     getQuestionById(id: Int): Question
+    getAllQuestions: [Question]
 }
 
 input filter {
