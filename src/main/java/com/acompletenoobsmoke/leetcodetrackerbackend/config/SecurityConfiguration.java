@@ -51,7 +51,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers("/api/auth/**", "/h2-console/**").permitAll()
-                        .requestMatchers(apiList.toArray(String[]::new)).authenticated()
+                        .requestMatchers("api/v1/users/**").authenticated()
                 )
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jWTAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

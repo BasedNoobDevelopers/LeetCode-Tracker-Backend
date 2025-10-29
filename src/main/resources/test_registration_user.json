@@ -1,0 +1,82 @@
+[
+  {
+    "firstName": "Osaretin",
+    "lastName": "Omofonmwan",
+    "userName": "OsoInfinite",
+    "password": "OsoInfinite",
+    "email": "OsoInfinite@gmail.com",
+    "language": "Python"
+  },
+  {
+    "firstName": "Aiden",
+    "lastName": "Smith",
+    "userName": "CodeAiden",
+    "password": "CodeAiden123",
+    "email": "aiden.smith@example.com",
+    "language": "Java"
+  },
+  {
+    "firstName": "Lara",
+    "lastName": "Jones",
+    "userName": "LaraDev",
+    "password": "LaraDev456",
+    "email": "lara.jones@example.com",
+    "language": "C++"
+  },
+  {
+    "firstName": "Ethan",
+    "lastName": "Brown",
+    "userName": "EthanCode",
+    "password": "EthanPass789",
+    "email": "ethan.brown@example.com",
+    "language": "Go"
+  },
+  {
+    "firstName": "Sophia",
+    "lastName": "Williams",
+    "userName": "SophiaCoder",
+    "password": "Sophia1234",
+    "email": "sophia.williams@example.com",
+    "language": "Python"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Taylor",
+    "userName": "NoahTech",
+    "password": "NoahTech321",
+    "email": "noah.taylor@example.com",
+    "language": "Java"
+  },
+  {
+    "firstName": "Mia",
+    "lastName": "Davis",
+    "userName": "MiaDev",
+    "password": "MiaDev987",
+    "email": "mia.davis@example.com",
+    "language": "C#"
+  },
+  {
+    "firstName": "Liam",
+    "lastName": "Wilson",
+    "userName": "LiamCodes",
+    "password": "LiamPass456",
+    "email": "liam.wilson@example.com",
+    "language": "Python"
+  },
+  {
+    "firstName": "Olivia",
+    "lastName": "Martinez",
+    "userName": "OliviaCoder",
+    "password": "Olivia789",
+    "email": "olivia.martinez@example.com",
+    "language": "JavaScript"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Anderson",
+    "userName": "JamesDev",
+    "password": "JamesDev654",
+    "email": "james.anderson@example.com",
+    "language": "Go"
+  }
+]
