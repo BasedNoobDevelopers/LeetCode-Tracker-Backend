@@ -1,9 +1,11 @@
 package com.acompletenoobsmoke.leetcodetrackerbackend.service;
 
 import com.acompletenoobsmoke.leetcodetrackerbackend.dto.AccountDTO;
+import com.acompletenoobsmoke.leetcodetrackerbackend.exception.ResourceForbiddenException;
 import com.acompletenoobsmoke.leetcodetrackerbackend.exception.ResourceNotFoundException;
 import com.acompletenoobsmoke.leetcodetrackerbackend.mapper.AccountMapper;
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.Account;
+import com.acompletenoobsmoke.leetcodetrackerbackend.model.ROLES;
 import com.acompletenoobsmoke.leetcodetrackerbackend.repository.real.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +27,10 @@ public class AccountService {
     }
 
     public List<AccountDTO> getAllAccounts() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        ROLES currentRole = accountRepository.getRoleByUserName(username);
+        if (currentRole != null && currentRole != ROLES.ADMIN)
+            throw new ResourceForbiddenException("Only Admin Can Access Accounts");
         List<Account> accounts = accountRepository.findAll();
         List<AccountDTO> accountDTOS = new ArrayList<>();
         for (Account account : accounts) {

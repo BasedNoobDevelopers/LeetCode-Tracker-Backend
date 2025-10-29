@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.ZonedDateTime;
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 
 @ControllerAdvice
@@ -62,4 +63,17 @@ public class DefaultExceptionHandler {
         );
         return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(ResourceForbiddenException.class)
+    public ResponseEntity<APIError> handleException(ResourceForbiddenException ex, HttpServletRequest request) {
+        APIError apiError = new APIError(
+                request.getRequestURI(),
+                ex.getMessage(),
+                HttpStatus.FORBIDDEN.value(),
+                ZonedDateTime.now(),
+                List.of()
+        );
+        return new ResponseEntity<>(apiError, HttpStatus.FORBIDDEN);
+    }
+
 }

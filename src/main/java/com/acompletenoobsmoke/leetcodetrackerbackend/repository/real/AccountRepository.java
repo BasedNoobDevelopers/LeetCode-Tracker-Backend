@@ -1,6 +1,7 @@
 package com.acompletenoobsmoke.leetcodetrackerbackend.repository.real;
 
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.Account;
+import com.acompletenoobsmoke.leetcodetrackerbackend.model.ROLES;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     boolean existsByEmail(String email);
     boolean existsByUserName(String username);
     boolean existsByPassword(String password);
+    ROLES getRoleByUserName(String username);
 }
