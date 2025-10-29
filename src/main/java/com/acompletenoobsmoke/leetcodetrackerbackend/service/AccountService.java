@@ -28,9 +28,10 @@ public class AccountService {
 
     public List<AccountDTO> getAllAccounts() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        ROLES currentRole = accountRepository.getRoleByUserName(username);
-        if (currentRole != null && currentRole != ROLES.ADMIN)
-            throw new ResourceForbiddenException("Only Admin Can Access Accounts");
+//        Account savedAccount = accountRepository.findByUserName(username).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+//        ROLES currentRole = savedAccount.getRole();
+//        if (currentRole != null && currentRole != ROLES.ADMIN)
+//            throw new ResourceForbiddenException("Only Admin Can Access Accounts");
         List<Account> accounts = accountRepository.findAll();
         List<AccountDTO> accountDTOS = new ArrayList<>();
         for (Account account : accounts) {

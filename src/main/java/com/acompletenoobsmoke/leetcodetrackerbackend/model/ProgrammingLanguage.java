@@ -8,7 +8,7 @@ public enum ProgrammingLanguage {
     C_PLUS_PLUS("C++"),
     C_SHARP("C#"),
     GO("Go"),
-    JavaScript("JavaScript"),;
+    JavaScript("JavaScript");
 
     private final String displayName;
 
