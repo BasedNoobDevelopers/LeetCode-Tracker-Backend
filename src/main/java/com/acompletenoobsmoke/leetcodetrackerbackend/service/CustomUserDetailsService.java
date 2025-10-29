@@ -17,6 +17,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
+        if (usernameOrEmail == null || usernameOrEmail.isEmpty()) {
+            throw new UsernameNotFoundException("Invalid username or password.");
+        }
         Account account;
 
         if (usernameOrEmail.contains("@")) {
@@ -29,7 +32,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return User.withUsername(account.getUserName())
                 .password(account.getPassword())
-                .roles(account.getRole().name())
+                .roles("ROLE_" + account.getRole().name())
                 .build();
     }
 

@@ -9,6 +9,7 @@ import com.acompletenoobsmoke.leetcodetrackerbackend.mapper.AccountMapper;
 import com.acompletenoobsmoke.leetcodetrackerbackend.model.Account;
 import com.acompletenoobsmoke.leetcodetrackerbackend.repository.real.AccountRepository;
 import com.acompletenoobsmoke.leetcodetrackerbackend.utils.JWTUtils;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,6 @@ public class AuthService {
         Account savedAccount = accountRepository.save(account);
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(savedAccount.getUserName());
         String token = jwtUtils.generateToken(userDetails);
-        System.out.println("Hello");
         AccountDTO accountDTO = AccountMapper.mapAccountDTOSupplier(savedAccount).get();
         accountDTO.setToken(token);
         return accountDTO;
