@@ -37,4 +37,16 @@ public class DefaultExceptionHandler {
         );
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(ResourceExistsException.class)
+    public ResponseEntity<APIError> handleException(ResourceExistsException ex, HttpServletRequest request) {
+        APIError apiError = new APIError(
+                request.getRequestURI(),
+                ex.getMessage(),
+                HttpStatus.CONFLICT.value(),
+                ZonedDateTime.now(),
+                List.of()
+        );
+        return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
+    }
 }
