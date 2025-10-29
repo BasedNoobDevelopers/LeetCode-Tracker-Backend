@@ -62,13 +62,6 @@ public class JWTUtils {
         return expirationDate.before(new Date());
     }
 
-    public String extractTokenFromHeader(HttpServletRequest request) {
-        String header = request.getHeader("Authorization");
-        if (header == null || !header.startsWith("Bearer "))
-            throw new JwtException("Invalid JWT Token");
-        return header.substring(7);
-    }
-
     @PostConstruct
     public void init() {
         System.out.println("JWTUtils initialized, SECRET_KEY length: " + SECRET_KEY.length());
