@@ -38,17 +38,8 @@ public class AuthService {
         if (accountRepository.existsByEmail(accountRegistration.getEmail())) {
             throw new ResourceExistsException("Email already exists!");
         }
-        if (accountRepository.existsByUsername(accountRegistration.getUserName())) {
+        if (accountRepository.existsByUserName(accountRegistration.getUserName())) {
             throw new ResourceExistsException("Username already exists!");
-        }
-    }
-
-    private void loginValidation(AccountSignIn accountSignIn) {
-        if (!accountRepository.existsByEmail(accountSignIn.getEmail())) {
-            throw new ResourceNotFoundException("Email Doesn't Exists!");
-        }
-        if (!accountRepository.existsByUsername(accountSignIn.getUserName())) {
-            throw new ResourceNotFoundException("Username Doesn't Exists!");
         }
     }
 
@@ -61,6 +52,7 @@ public class AuthService {
         Account savedAccount = accountRepository.save(account);
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(savedAccount.getUserName());
         String token = jwtUtils.generateToken(userDetails);
+        System.out.println("Hello");
         AccountDTO accountDTO = AccountMapper.mapAccountDTOSupplier(savedAccount).get();
         accountDTO.setToken(token);
         return accountDTO;
@@ -68,7 +60,7 @@ public class AuthService {
 
     public AccountDTO login(AccountSignIn request) {
         Account savedAccount = (request.getUserName() != null) ?
-                accountRepository.findByUsername(request.getUserName()).orElseThrow(() -> new ResourceNotFoundException("Username Not Found!"))
+                accountRepository.findByUserName(request.getUserName()).orElseThrow(() -> new ResourceNotFoundException("Username Not Found!"))
                 : accountRepository.findByEmail(request.getEmail()).orElseThrow(() -> new ResourceNotFoundException("Email Not Found!"));
 
         authenticationManager.authenticate(

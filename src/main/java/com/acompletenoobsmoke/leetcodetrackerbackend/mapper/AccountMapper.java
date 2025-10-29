@@ -24,6 +24,7 @@ public class AccountMapper {
 
     private static AccountDTO mapAccountDTO(Account account) {
         return new AccountDTO(
+                "",
                 account.getId(),
                 account.getUserName(),
                 account.getEmail(),
