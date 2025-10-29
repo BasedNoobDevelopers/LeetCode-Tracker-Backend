@@ -11,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 public class AccountDTO {
 
+    private String token;
     private Long id;
     private String userName;
     private String email;
