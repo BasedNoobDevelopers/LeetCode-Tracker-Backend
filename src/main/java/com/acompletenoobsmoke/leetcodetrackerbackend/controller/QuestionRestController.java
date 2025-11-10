@@ -31,5 +31,10 @@ public class QuestionRestController {
         return questionService.getQuestionById(id);
     }
 
+    @GetMapping("test")
+    public String getQuestionById() {
+        return "Two Sum!";
+    }
+
 
 }
