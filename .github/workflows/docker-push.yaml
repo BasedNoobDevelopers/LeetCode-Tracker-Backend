@@ -28,8 +28,8 @@ jobs:
       - name: Docker Login
         uses: docker/login-action@v3
         with:
-          username: ${{secrets.ONEHPEE_DOCKER_USERNAME}}
-          password: ${{secrets.ONEHPEE_DOCKER_PASSWORD}}
+          username: ${{secrets.DIOS_DOCKER_USERNAME}}
+          password: ${{secrets.DIOS_DOCKER_PASSWORD}}
 
       - name: Build & Push To Docker Hub
         uses: docker/build-push-action@v4
@@ -37,6 +37,6 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{secrets.ONEHPEE_DOCKER_USERNAME}}/test:2.0.0
+          tags: ${{secrets.DIOS_DOCKER_USERNAME}}/test:2.0.0
 
 
