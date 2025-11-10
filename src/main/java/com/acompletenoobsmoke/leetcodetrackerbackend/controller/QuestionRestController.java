@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/questions")
+@RequestMapping("/api/v1/questions")
 public class QuestionRestController {
 
     private final QuestionService questionService;
@@ -31,7 +31,7 @@ public class QuestionRestController {
         return questionService.getQuestionById(id);
     }
 
-    @GetMapping("test")
+    @GetMapping("/test")
     public String getQuestionById() {
         return "Two Sum!";
     }
