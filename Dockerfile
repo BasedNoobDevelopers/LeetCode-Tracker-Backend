@@ -1,4 +1,4 @@
-FROM openjdk:25-jdk AS build
+FROM openjdk:26-ea-trixie AS build
 WORKDIR /app
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
@@ -7,7 +7,7 @@ RUN ./mvnw dependency:go-offline
 COPY src ./src
 RUN ./mvnw package -DskipTests
 
-FROM openjdk:25-jdk
+FROM openjdk:26-ea-trixie
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
