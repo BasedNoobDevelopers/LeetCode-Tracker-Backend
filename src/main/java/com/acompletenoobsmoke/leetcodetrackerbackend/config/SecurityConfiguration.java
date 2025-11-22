@@ -43,7 +43,6 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, JWTAuthenticationFilter jWTAuthenticationFilter) throws Exception {
-        System.out.println("Testing new changes");
         http
                 .headers(headers ->
                         headers.xssProtection(withDefaults())

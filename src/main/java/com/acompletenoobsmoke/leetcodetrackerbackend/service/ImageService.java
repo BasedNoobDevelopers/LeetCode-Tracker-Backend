@@ -11,6 +11,8 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
+
 @Service
 public class ImageService {
 
@@ -36,8 +38,8 @@ public class ImageService {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
         builder
                 .part("file", file.getResource())
-                .filename(file.getOriginalFilename())
-                .contentType(MediaType.parseMediaType(file.getContentType()));
+                .filename(Objects.requireNonNull(file.getOriginalFilename()))
+                .contentType(MediaType.parseMediaType(Objects.requireNonNull(file.getContentType())));
 
         String response = webClient.post()
                 .uri("/upload")
