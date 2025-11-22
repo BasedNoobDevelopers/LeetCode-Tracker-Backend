@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.Locale;
 import java.util.function.Supplier;
@@ -30,6 +31,7 @@ import java.util.function.Supplier;
 public class AuthService {
 
     private final AccountRepository accountRepository;
+    private final ImageService imageService;
     private final AuthenticationManager authenticationManager;
     private final CustomUserDetailsService customUserDetailsService;
     private final JWTUtils jwtUtils;
@@ -50,6 +52,7 @@ public class AuthService {
         String encodedPassword = passwordEncoder.encode(accountRegistration.getPassword());
         accountRegistration.setPassword(encodedPassword);
         Account account = AccountMapper.mapAccountFromRegistrationSupplier(accountRegistration).get();
+        imageService.uploadImage(accountRegistration.getFile());
         Account savedAccount = accountRepository.save(account);
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(savedAccount.getUserName());
         String token = jwtUtils.generateToken(userDetails);
